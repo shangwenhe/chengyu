@@ -1,0 +1,45 @@
+/**
+ * @file:
+ * @FileName: nav.less
+ * @author: shangwenhe@baidu.com
+ * @date: 2015-08-14  09:11
+ * @description: this is a new file
+ */
+
+
+.mod-nav{
+    width: 50px;
+    height: 45px;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .nav-bar(){
+        width: 30px;
+        height:2px;
+        border-radius:3px;
+        background: #fff;
+        position: absolute;
+        display: block;
+        margin: 0;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+    .nav-bar{
+        .nav-bar();
+        left: 12px;
+        top: 21px;
+    }
+    .nav-bar:after{
+        .nav-bar();
+        content: '';
+        top: -7px;
+        left:0;
+    }
+    .nav-bar:before{
+        .nav-bar();
+        content: '';
+        top: 7px;
+        left:0;
+        
+    }
+}
