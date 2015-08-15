@@ -6,15 +6,54 @@
  * @description: this is a new file
  */
 
-
-.mod-detail{
-    .word-info{}
-    .rand-word{
-       height: 30px;
+.mod-detail {
+    .word-info {
+        .detail-info {
+            text-align: left;
+            line-height: 2.5em;
+            font-family: '微软雅黑';
+            h2 {
+                font-size: 2em;
+                span {
+                    display: block;
+                    font-size: 0.5em;
+                }
+            }
+            .detail-name,
+            .fromto,
+            .sample {
+                margin: 1em;
+            }
+            .detail-name {
+                background: #07b2d9;
+                color: #fff;
+                border-radius: 2px;
+                h2 {
+                    padding: 0.4em 0.4em 0.2em;
+                }
+                .analysis {
+                    background: #06acd6;
+                    padding: 0.8em;
+                }
+            }
+            .fromto,
+            .sample {
+                padding: 0.8em;
+                background: #fff;
+                border-radius: 2px;
+                div {
+                    color: #42bf9d;
+                    border-bottom: 1px solid #dfdfe0;
+                }
+            }
+        }
+    }
+    .rand-word {
+        height: 30px;
         width: 80px;
         margin: 0 auto;
-       background:url(./shuffle.png) no-repeat center center; 
-       background-size: auto 29px;
-       opacity: 0.7;
+        background: url(./shuffle.png) no-repeat center center;
+        background-size: auto 29px;
+        opacity: 0.7;
     }
 }

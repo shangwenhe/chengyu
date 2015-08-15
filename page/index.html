@@ -10,12 +10,24 @@
     <meta name="wap-font-scale" content="no">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta content="telephone=no" name="format-detection">
-    <link rel="stylesheet" href="./static/page/reset.less">
-    <script type="text/javascript" src="./static/lib/zepto/zepto.js"></script>
+    <link rel="stylesheet" href="../static/page/reset.less">
+    <link rel="stylesheet" href="../static/page/index.less">
+    <script type="text/javascript" src="../static/lib/mod.js"></script>
+    <script type="text/javascript" src="../static/lib/zepto/zepto.js"></script>
 </head>
 
 <body>
-    <link rel="import" href="chengyu:widget/topbar/topbar.html?__inline">
+    <div class="mod-head">
+        <link rel="import" href="chengyu:widget/topbar/topbar.html?__inline">
+    </div>
+    <div class="mod-con">
+        <div class="mod-con-head">
+            <link rel="import" href="chengyu:widget/hotkey/hotkey.html?__inline">
+            <link rel="import" href="chengyu:widget/replace/replace.html?__inline">
+        </div>
+        <link rel="import" href="chengyu:widget/detail/detail.html?__inline">
+    </div>
+    <div class="mod-float"></div>
 </body>
 
 </html>

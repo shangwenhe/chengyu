@@ -1,11 +1,18 @@
-<link rel="stylesheet" href="./detail.less" type="text/css">
+<!--
+    @require "./detail.less"
+    @require "./detail.js"
+-->
 
 
-<div class='mod-detail'>
+<div class="mod-detail">
     <div class="word-info"></div>
     <div class="rand-word">
          
     </div>
 </div>
 
-
+<script type="text/javascript">
+    require.async("chengyu:widget/detail/detail.js",function(detail){
+       detail(); 
+    });
+</script>
