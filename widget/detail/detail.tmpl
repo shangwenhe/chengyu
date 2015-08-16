@@ -4,6 +4,7 @@
 			<div class="detail-name">
 			<h2><%= item.name%><span> <%= item.sound%>	</span></h2>
 			<p class='analysis'>解析：<%= item.analysis%>	</p>
+			<span class='view-count'>浏览<%=item.views%>次</span>
 			</div>
 			<% if(item.fromto){ %>
 			<div class='fromto'><div>出处</div><p><%= item.fromto%></p></div>

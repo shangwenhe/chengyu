@@ -13,13 +13,49 @@
     top: 0;
     bottom: 0;
     height: 45px;
+    -webkit-transition: left .3s ease-in;
+    -moz-transition: left .3s ease-in;
+    -ms-transition: left .3s ease-in;
+    transition: left .3s ease-in;
     .search-box {
         border: none;
         border-radius: 2px;
         background: #fff;
         width: 100%;
         margin-top: 9px;
-        height: 26px;
-        text-indent: 0.3em;
+        height: 28px;
+        .search-value {
+            height: 26px;
+            text-indent: 0.3em;
+            border: none;
+            border-radius: 2px;
+            background: #fff;
+            width: 99%;
+            outline: none;
+        }
+    }
+    .sugge {
+        background: #fff;
+        width: 100%;
+        display: none;
+        li {
+            list-style: none;
+            height: 2em;
+            line-height: 2em;
+            padding: 0.4em 0.8em;
+            a {
+                font-size: 1.5em;
+                color: #333;
+                text-decoration: none;
+                display: block;
+                margin-right: 10em;
+            }
+            &:nth-child(odd) {
+                background-color: #dbf8ff;
+            }
+            span {
+                float: right;
+            }
+        }
     }
 }

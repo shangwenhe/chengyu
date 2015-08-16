@@ -1,0 +1,9 @@
+<% $.each(list, function(index, item){ %>
+	<li>
+		<span>共浏览<%=item.views%>次</span>
+		<a href='./?name=<%=item.name%>'>
+		<i><%=item.indexName%></i>
+		<%=item.name%>
+		</a>
+	</li>
+<% }) %>

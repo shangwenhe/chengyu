@@ -1,5 +1,18 @@
-<link rel="stylesheet" type="text/css" href="./search.less">
+<!--
+    @require './search.less'
+    @require './search.js'
+-->
 
 <div class="mod-search">
-    <input type="" class="search-box">
+
+    <div class="search-box">
+        <input placeholder='按字母搜索' type="" class="search-value">
+    </div>
+    <ul class='sugge'>
+    </ul>
 </div>
+<script type="text/javascript">
+    require.async('chengyu:widget/search/search', function (search){
+        search.init();
+    });
+</script>

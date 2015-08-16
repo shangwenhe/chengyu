@@ -1,6 +1,14 @@
 fis.hook('module', {
-    mod: 'commonJs'
-}).set('namespace', 'chengyu');
+        mod: 'commonJs'
+    }).set('namespace', 'chengyu')
+    // 删除部上线内容
+    .set('project.ignore', [
+        'output/**',
+        'test/**',
+        '**.sh',
+        '**.md',
+        'fis-conf.js'
+    ]);
 
 fis.media('dev')
     .match('*.{css,less}', {
@@ -19,9 +27,9 @@ fis.media('dev')
         useHash: false
     })
     .match('/widget/**.tmpl', {
-        parser:fis.plugin('utc'),
-        rExt:'js',
-        release:false
+        parser: fis.plugin('utc'),
+        rExt: 'js',
+        release: false
     })
     .match('/widget/**.js', {
         isMod: true,
@@ -45,24 +53,21 @@ fis.media('dev')
     })
     .match('*', {
         domain: 'http://lnmp.baidu.com/chengyu',
-        deploy: fis.plugin('local-deliver', {
-            to: '/home/wwwroot/default/chengyu'
-        })
+        deploy: [
+            fis.plugin('replace', {
+                from: 'www.yiajie.com',
+                to: 'node.baidu.com'
+            }),
+            fis.plugin('local-deliver', {
+                to: '/home/wwwroot/default/chengyu'
+            })
+        ]
     });
 
 
 // prod 
 fis
     .media('prod').set('pkg', '/')
-
-// 删除部上线内容
-.set('project.ignore', [
-    'output/**',
-    'test/**',
-    '**.sh',
-    '**.md',
-    'fis-conf.js'
-])
 
 // 全局
 .match('*.{css,less}', {
@@ -83,14 +88,18 @@ fis
     })
 
 // static 
-.match('/static/**.{less,js}', {
+.match('/static/page/**.js', {
         isMod: true,
-        release: '$0'
+        release: '$0',
+        useHash: true
     })
-    .match('/static/mod.js', {
-        isMod: false
+    .match('/static/lib/**.js', {
+        isMod: false,
+        release: '$0',
+        useHash: true
     })
-    .match('/static/**.js', {
+
+.match('/static/**.js', {
         packTo: '${pkg}/static/all_static.js'
     })
     .match('/static/**.css', {
@@ -108,6 +117,11 @@ fis
     .match('/widget/**.less', {
         packTo: '${pkg}/widget/all_widget.css'
     })
+    .match('/widget/**.tmpl', {
+        parser: fis.plugin('utc'),
+        rExt: 'js',
+        release: false
+    })
 
 // package
 .match('::package', {
@@ -119,8 +133,9 @@ fis
         })
     })
     .match('*', {
-        domain: 'http://outsource.idoar.com/chengyu',
+        domain: 'http://static.yiajie.com:8080',
         deploy: fis.plugin('local-deliver', {
-            to: './output/'
+            // to: './output/'
+            to: '/home/shangwenhe/node/chengyu/browser/'
         })
     });
