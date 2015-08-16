@@ -52,14 +52,14 @@ fis.media('dev')
         })
     })
     .match('*', {
-        domain: 'http://lnmp.baidu.com/chengyu',
+        domain: 'http://v6.yiajie.com',
         deploy: [
-            fis.plugin('replace', {
-                from: 'www.yiajie.com',
-                to: 'node.baidu.com'
-            }),
+            // fis.plugin('replace', {
+            //     from: 'www.yiajie.com',
+            //     to: 'node.baidu.com'
+            // }),
             fis.plugin('local-deliver', {
-                to: '/home/wwwroot/default/chengyu'
+                to: '/home/wwwroot/yiajie/chengyu/browser'
             })
         ]
     });
@@ -133,7 +133,7 @@ fis
         })
     })
     .match('*', {
-        domain: 'http://static.yiajie.com:8080',
+        domain: 'http://v6.yiajie.com',
         deploy: fis.plugin('local-deliver', {
             // to: './output/'
             to: '/home/shangwenhe/node/chengyu/browser/'
