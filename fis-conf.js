@@ -86,7 +86,8 @@ fis
         optimizer: fis.plugin('png-compressor')
     })
     .match('*.html', {
-        useMap: true
+        useMap: true,
+        optimizer: fis.plugin('html-minifier')
     })
 
 // static 
