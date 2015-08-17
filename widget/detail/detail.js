@@ -55,10 +55,12 @@ function getDataByName(name, callback) {
         },
         dataType: 'jsonp',
         success: function (data) {
-
-            console.log(data);
+            // 当失败的时候走到随机
+            if(data[0] && data[0].error){
+                getDataByRand();
+                return;
+            }
             document.title = data[0] && data[0].name || '成语大全';
-
             $('.word-info').html(detailHtml({
                 data: data
             }));
@@ -75,18 +77,19 @@ function getDataByName(name, callback) {
 module.exports = function () {
     var dataList;
     var name = window.location.href.match(/name=([^&]*)/);
-    if (name && name[1]) {
-        getDataByName($.trim(name[1]))
-    } else {
-        getDataByRand(function (err, data) {
-            if (err) {
-                return;
-            }
-        });
-    }
+
     $('.replace,.rand-word').on('click', function () {
         getDataByRand();
     });
-
     search.sugg(getDataByName);
+    if (name && name[1] ) {
+        try{
+            var nameUri = decodeURIComponent(name[1]);
+            if(/[\u4e00-\u9fa5]/.test(nameUri)){
+                getDataByName($.trim(nameUri));
+                return;
+            }
+        }catch(e){ }
+    }   
+    getDataByRand();
 };

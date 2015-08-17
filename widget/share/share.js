@@ -16,7 +16,7 @@ module.exports = function (className) {
     $('.word-info').on('click', className, function () {
         var title = document.title;
         history.replaceState({},'','http://www.yiajie.com/?name=' + title);
-        if (/Mobile/ig.test(navigator.userAgent)) {
+        if (/uc/ig.test(navigator.userAgent)) {
             nativeShare('nativeShare', {
                 url: 'http://www.yiajie.com/?name=' + title,
                 title: title,
