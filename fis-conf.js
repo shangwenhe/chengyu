@@ -52,12 +52,14 @@ fis.media('dev')
         })
     })
     .match('*', {
-        domain: 'http://v6.yiajie.com',
+        domain: 'http://v6.baidu.com',
         deploy: [
-            // fis.plugin('replace', {
-            //     from: 'www.yiajie.com',
-            //     to: 'node.baidu.com'
-            // }),
+            fis.plugin('replace', {
+                // 线上node 服务的域名
+                from: 'www.yiajie.com',
+                // 线下node 服务的域名
+                to: 'yj.baidu.com'
+            }),
             fis.plugin('local-deliver', {
                 to: '/home/wwwroot/yiajie/chengyu/browser'
             })
@@ -136,6 +138,6 @@ fis
         domain: 'http://v6.yiajie.com',
         deploy: fis.plugin('local-deliver', {
             // to: './output/'
-            to: '/home/shangwenhe/node/chengyu/browser/'
+            to: '/home/wwwroot/yiajie/chengyu/browser'
         })
     });

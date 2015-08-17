@@ -28,39 +28,46 @@ function getDataByRand(callback) {
         url: 'http://www.yiajie.com/rand',
         dataType: 'jsonp',
         success: function (data) {
+
             document.title = data[0] && data[0].name || '成语大全';
             // typeof callback === 'function'  && callback(false, data);
             $('.word-info').html(detailHtml({
                 data: data
             }));
+            if (location.href.indexOf('name=') < 0) {
+                history.replaceState({}, '', location.href + (location.href.indexOf('?') < 0 ? '?' : '&') + 'name=' + document.title);
+            } else {
+                history.replaceState({}, '', location.href.replace(/(name=)[^&]*/, '$1' + document.title));
+            }
         },
         error: function (error) {
             callback && callback(true, error);
-        
         }
     });
 }
 
 // name查询一条数据
-function getDataByName(name,callback){
+function getDataByName(name, callback) {
     $.ajax({
         url: 'http://www.yiajie.com/get',
-        data:{
+        data: {
             name: $.trim(name)
         },
         dataType: 'jsonp',
         success: function (data) {
+
+            console.log(data);
             document.title = data[0] && data[0].name || '成语大全';
-            
-            // typeof callback === 'function'  && callback(false, data);
+
             $('.word-info').html(detailHtml({
                 data: data
             }));
-            history.replaceState({},'',location.href.replace(/name=[^&]*/,''));
+
+            history.replaceState({}, '', location.href.replace(/(name=)[^&]*/, '$1' + document.title));
         },
         error: function (error) {
             callback && callback(true, error);
-        
+
         }
     });
 }
@@ -68,12 +75,12 @@ function getDataByName(name,callback){
 module.exports = function () {
     var dataList;
     var name = window.location.href.match(/name=([^&]*)/);
-    if(name && name[1]){
+    if (name && name[1]) {
         getDataByName($.trim(name[1]))
-    }else{
-        getDataByRand(function(err, data){
-            if(err){
-                return ; 
+    } else {
+        getDataByRand(function (err, data) {
+            if (err) {
+                return;
             }
         });
     }
@@ -81,5 +88,5 @@ module.exports = function () {
         getDataByRand();
     });
 
-    search.sugg(getDataByName);    
+    search.sugg(getDataByName);
 };
