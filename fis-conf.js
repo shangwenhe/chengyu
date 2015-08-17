@@ -29,6 +29,7 @@ fis.media('dev')
     .match('/widget/**.tmpl', {
         parser: fis.plugin('utc'),
         rExt: 'js',
+        isJsLike: true,
         release: false
     })
     .match('/widget/**.js', {
@@ -123,6 +124,7 @@ fis
     .match('/widget/**.tmpl', {
         parser: fis.plugin('utc'),
         rExt: 'js',
+        isJsLike: true,
         release: false
     })
 
