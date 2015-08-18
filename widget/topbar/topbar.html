@@ -1,4 +1,7 @@
-<link rel="stylesheet" type="text/css" href="./topbar.less">
+<!--
+    @require './topbar.less'
+    @require './topbar.js'
+-->
 <div class="topbar">
     <!-- 导航 -->
     <link rel="import" href="chengyu:widget/nav/nav.html?__inline">
@@ -7,3 +10,8 @@
         <link rel="import" href="chengyu:widget/search/search.html?__inline">
     </div>
 </div>
+<script type="text/javascript">
+    require.async('./topbar.js', function (t) {
+        t()
+    });
+</script>

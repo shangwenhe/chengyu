@@ -9,9 +9,10 @@
 
 // topbar.js start
 
-function topbar(){}
+function topbar() {
+    $(".mod-nav").on("click", function () {
+        window.location.href = "http://www.yiajie.com/"
+    })
+}
 
-module.exports = {
-
-};
-
+module.exports = topbar;

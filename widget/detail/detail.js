@@ -28,16 +28,18 @@ function getDataByRand(callback) {
         url: 'http://www.yiajie.com/rand',
         dataType: 'jsonp',
         success: function (data) {
-
-            document.title = data[0] && data[0].name || '成语大全';
+            if (!(data[0] && data[0].name)) {
+                return;
+            }
+            document.title = data[0].name + '-随手成语';
             // typeof callback === 'function'  && callback(false, data);
             $('.word-info').html(detailHtml({
                 data: data
             }));
             if (location.href.indexOf('name=') < 0) {
-                history.replaceState({}, '', location.href + (location.href.indexOf('?') < 0 ? '?' : '&') + 'name=' + document.title);
+                history.replaceState({}, '', location.href + (location.href.indexOf('?') < 0 ? '?' : '&') + 'name=' + data[0].name);
             } else {
-                history.replaceState({}, '', location.href.replace(/(name=)[^&]*/, '$1' + document.title));
+                history.replaceState({}, '', location.href.replace(/(name=)[^&]*/, '$1' + data[0].name));
             }
         },
         error: function (error) {
@@ -56,16 +58,16 @@ function getDataByName(name, callback) {
         dataType: 'jsonp',
         success: function (data) {
             // 当失败的时候走到随机
-            if(data[0] && data[0].error){
+            if (data[0] && data[0].error) {
                 getDataByRand();
                 return;
             }
-            document.title = data[0] && data[0].name || '成语大全';
+            document.title = data[0].name + '-随手成语';
             $('.word-info').html(detailHtml({
                 data: data
             }));
 
-            history.replaceState({}, '', location.href.replace(/(name=)[^&]*/, '$1' + document.title));
+            history.replaceState({}, '', location.href.replace(/(name=)[^&]*/, '$1' + data[0].name));
         },
         error: function (error) {
             callback && callback(true, error);
@@ -82,14 +84,14 @@ module.exports = function () {
         getDataByRand();
     });
     search.sugg(getDataByName);
-    if (name && name[1] ) {
-        try{
-            var nameUri = decodeURIComponent(name[1]);
-            if(/[\u4e00-\u9fa5]/.test(nameUri)){
-                getDataByName($.trim(nameUri));
-                return;
-            }
-        }catch(e){ }
-    }   
-    getDataByRand();
+    // if (name && name[1] ) {
+    //     try{
+    //         var nameUri = decodeURIComponent(name[1]);
+    //         if(/[\u4e00-\u9fa5]/.test(nameUri)){
+    //             getDataByName($.trim(nameUri));
+    //             return;
+    //         }
+    //     }catch(e){ }
+    // }   
+    // getDataByRand();
 };

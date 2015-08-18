@@ -10,15 +10,15 @@
 // list/list.js start
 var listTmpl = __inline('./list.tmpl');
 
-function getlist(page) {
+function getlist(param) {
     $.ajax({
         url: 'http://www.yiajie.com/list',
-        data: {
-            page: 1
-        },
+        data: param,
         dataType: 'jsonp',
         success: function (data) {
-            var list =  listTmpl({list:data});
+            var list = listTmpl({
+                list: data
+            });
             $('.mod-list').html(list);
         },
         error: function () {}
@@ -26,5 +26,12 @@ function getlist(page) {
 }
 
 module.exports = function () {
-    getlist(1);
+    var getListParam ={page:1};
+    if(/wl=\d*/.test(window.location.href)){
+        getListParam.wl = window.location.href.replace(/^.*wl=(\d*).*$/,'$1');
+    }
+    if(/page=\d*/.test(window.location.href)){
+        getListParam.page = window.location.href.replace(/^.*page=(\d*).*$/,'$1')
+    }
+    getlist(getListParam);
 };

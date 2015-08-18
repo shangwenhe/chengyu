@@ -84,8 +84,13 @@ fis
         useHash: true
     })
     .match('*.png', {
-        optimizer: fis.plugin('png-compressor')
+        optimizer: fis.plugin('png-compressor'),
+        useHash: true
     })
+    .match('/page/**.png', {
+        useHash: false
+    })
+
     .match('*.html', {
         useMap: true,
         optimizer: fis.plugin('html-minifier')
