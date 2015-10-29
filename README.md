@@ -3,11 +3,11 @@ chengyu
 
 # browser
 前端模块
-jquery
+fis3 components 挂载类库
 
-underscore
-
-bootstrp
+fis3 install jquery
+fis3 install underscore
+fis3 install bootstrap
 
 Event 事件对象
 
