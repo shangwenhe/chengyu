@@ -1,3 +1,4 @@
 output/
 *.sh
 node_modules/
+config.js
