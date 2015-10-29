@@ -80,6 +80,9 @@ fis.match('::package', {
 
     })
 });
+fis.match('/page/(*.html)', {
+    release: '/${namespace}/$1'
+});
 
 // Global end
 
