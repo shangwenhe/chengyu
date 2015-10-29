@@ -1,0 +1,22 @@
+{
+  "name": "chengyu-server",
+  "version": "1.0.0",
+  "description": "成语大全",
+  "main": "index.js",
+  "scripts": {
+    "test": "pm2 start index.js"
+  },
+  "keywords": [
+    "chengyu"
+  ],
+  "author": "shangwenhe@baidu.com",
+  "license": "ISC",
+  "dependencies":{
+    "express": "*",
+    "mysql":"*"
+  },
+  "bugs":{
+    "url":"https://github.com/shangwenhe/chengyu-server/issues"
+  },
+  "homepage":"http:www.yiajie.com"
+}
