@@ -13,21 +13,24 @@ module.exports = {
     // 首页
     index: function (req, res) {
         res.type('.html');
-        res.render('index', {
+        res.render('chengyu/index', {
             title: 'Index'
         });
     },
     // 搜索接口
     search: function (req, res) {
-
+        // req.params 路径中的参数
+        // req.query 查询字符串
+        res.send(req.params.name +JSON.stringify(req.query));
     },
     // list列表页
     list: function (req, res) {
-
+        res.send(req.params.id)
     },
+
     // 详细内容
     page: function (req, res) {
-
+        res.send(req.params.id)
     },
     // 推荐入口
     recommend: function (req, res) {

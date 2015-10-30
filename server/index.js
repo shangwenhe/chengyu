@@ -33,6 +33,13 @@ app.use(express.static(path.join(__dirname, conf.static)));
 // }
 
 
+app.use(function (req, res, next) {
+    console.log('%s %s %s', req.method, req.url, req.path);
+    next();
+});
+
+
+
 // 首页
 app.get('/', router.index);
 // 搜索接口
@@ -43,6 +50,9 @@ app.get('/list/:id', router.list);
 app.get('/recommend/', router.recommend);
 // 详细内容
 app.get('/page/:id', router.page);
+
+
+
 
 // 监听端口
 http.createServer(app).listen(app.get('port'), function () {
