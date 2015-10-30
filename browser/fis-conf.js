@@ -80,9 +80,6 @@ fis.match('::package', {
 
     })
 });
-fis.match('/page/(*.html)', {
-    release: '/${namespace}/$1'
-});
 
 // Global end
 
@@ -104,20 +101,23 @@ fis.media('pro')
     .match('*', {
         domain: '.'
     })
+    .match('/page/(*.html)', {
+        release: './views/${namespace}/$1'
+    })
     .match('/{static,components}/**.js', {
         optimizer: fis.plugin('uglify-js'),
-        packTo: '/static/pkg_js_1.js'
+        packTo: './public/static/pkg_js_1.js'
     })
     .match('/widget/**.js', {
         optimizer: fis.plugin('uglify-js'),
-        packTo: '/widget/pkg_js_2.js'
+        packTo: './public/widget/pkg_js_2.js'
     })
     .match('**.less', {
         optimizer: fis.plugin('clean-css'),
-        packTo: '/static/pkg_css.css'
+        packTo: './public/static/pkg_css.css'
     })
     .match('*', {
         deploy: fis.plugin('local-deliver', {
-            to: './output'
+            to: '../server/browser/'
         })
     });
