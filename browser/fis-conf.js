@@ -31,9 +31,9 @@ fis.match('*.js', {
     useMap: true,
     requires: [
         'chengyu:static/mod/mod.js',
-        'chengyu:static/jquery/jquery.js',
-        'chengyu:static/underscore/underscore.js',
-        'chengyu:static/Event/Event.js',
+        'chengyu:components/jquery/jquery.js',
+        'chengyu:components/underscore/underscore.js',
+        'chengyu:static/Event/Event.js'
     ]
 });
 
@@ -104,7 +104,7 @@ fis.media('pro')
     .match('*', {
         domain: '.'
     })
-    .match('/static/**.js', {
+    .match('/{static,components}/**.js', {
         optimizer: fis.plugin('uglify-js'),
         packTo: '/static/pkg_js_1.js'
     })
