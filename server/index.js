@@ -8,10 +8,22 @@
 
 /* eslint-disable fecs-camelcase */
 
+//  配置文件
 var conf = require('./conf/config.js');
+// 注册全局变量
+globals = {};
 
+// 全局变量
+var events = require('events');
+global.emitter = new events.EventEmitter();
 
 var express = require('express');
+
+
+
+// 控制器 -- 注册路由中的事件
+require('./controller/index.js');
+// 引入路由
 var router = require('./router/index.js');
 var http = require('http');
 var path = require('path');
@@ -52,6 +64,14 @@ app.get('/recommend/', router.recommend);
 app.get('/page/:id', router.page);
 
 
+// 当以上所有路由都无法接入时进入下列路由中
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).render('chengyu/500');
+});
+app.use(function (req, res) {
+    res.status(404).render('chengyu/404');
+});
 
 
 // 监听端口

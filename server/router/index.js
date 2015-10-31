@@ -9,19 +9,30 @@
 // /home/shangwenhe/github/chengyu/server/router/index.js start
 /* eslint-disable fecs-camelcase */
 
+function routerHook(router, req, res) {
+    emitter.emit('render:' + router, {
+        params: req.params,
+        query: req.query,
+        req: req,
+        res: res
+    }, function (data) {
+        res.render('chengyu/' + router, data);
+    });
+}
+
+
+
 module.exports = {
     // 首页
     index: function (req, res) {
         res.type('.html');
-        res.render('chengyu/index', {
-            title: 'Index'
-        });
+        routerHook('index', req, res);
     },
     // 搜索接口
     search: function (req, res) {
         // req.params 路径中的参数
         // req.query 查询字符串
-        res.send(req.params.name +JSON.stringify(req.query));
+        routerHook('search', req, res);
     },
     // list列表页
     list: function (req, res) {
