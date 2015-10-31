@@ -9,26 +9,25 @@
 /* eslint-disable fecs-camelcase */
 
 //  配置文件
-var conf = require('./conf/config.js');
+var conf = require('./conf/config');
 // 注册全局变量
 globals = {};
 
-// 全局变量
+// 全局事件中心
 var events = require('events');
 global.emitter = new events.EventEmitter();
 
-var express = require('express');
-
-
-
-// 控制器 -- 注册路由中的事件
-require('./controller/index.js');
-// 引入路由
-var router = require('./router/index.js');
-var http = require('http');
 var path = require('path');
 
+// module 模块
+require('./module/mysql')
+// 控制器 -- 注册路由中的事件
+require('./controller/index');
+// 引入路由
+var router = require('./router/index');
+
 // express 设置
+var express = require('express');
 var app = express();
 app.set('env', conf.env || 'pro');
 app.set('port', conf.port || 3000);
@@ -75,6 +74,7 @@ app.use(function (req, res) {
 
 
 // 监听端口
+var http = require('http');
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });

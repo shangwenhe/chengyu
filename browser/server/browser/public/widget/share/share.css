@@ -1,0 +1,51 @@
+/**
+ * @FileName: share.less
+ * @author: shangwenhe@baidu.com
+ * @date: 2015-08-16  03:43
+ * @description: this is a new file
+ * @require 'chengyu:widget/share/nativeShare/nativeShare.less'
+ */
+.mod-share {
+  display: none;
+  position: fixed;
+  background: rgba(225, 225, 225, 0.7);
+  width: 100%;
+  top: 45px;
+  height: 100%;
+}
+.mod-share .bdsharebuttonbox {
+  width: 85%;
+  margin: 0 auto;
+  position: absolute;
+  top: 70px;
+  left: 7.5%;
+  background: #fff;
+  font-size: 13px;
+  padding: 0.8em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: none;
+  font-family: '微软雅黑';
+  text-align: center;
+}
+.mod-share .bdsharebuttonbox h2 {
+  height: 2em;
+  line-height: 2em;
+  text-align: left;
+}
+.mod-share .bdsharebuttonbox ul {
+  display: box;
+  box-orient: horizontal;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  padding: 1.3em 0.8em;
+}
+.mod-share .bdsharebuttonbox ul li {
+  box-flex: 1;
+  -webkit-box-flex: 1;
+}
+.mod-share .bdsharebuttonbox ul li a {
+  float: none;
+  display: inline-block;
+}

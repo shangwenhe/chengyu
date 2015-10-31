@@ -1,9 +1,20 @@
 <!--
-    @require './detail.js'
-    @require './detail.less'
+    @require "./detail.less"
+    @require "./detail.js"
 -->
-<div class='detail'>
+
+
+<div class="mod-detail">
+    <div class="word-info">
+        <!-- link rel="import" href="./detailinner.html?__inline" -->
+    </div>
+    <div class="rand-word">
+        随便看看
+    </div>
 </div>
 
-
-
+<script type="text/javascript">
+    require.async("chengyu:widget/detail/detail.js",function(detail){
+       detail(); 
+    });
+</script>

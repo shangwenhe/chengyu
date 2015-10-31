@@ -1,9 +1,11 @@
 <!--
-    @require './list.js'
     @require './list.less'
+    @require './list.js'
 -->
-<div class='list'>
-</div>
+<ul class='mod-list'></ul>
 
-
-
+<script type="text/javascript">
+    require.async('chengyu:widget/list/list',function(list){
+        list();
+    });
+</script>

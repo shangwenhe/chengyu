@@ -1,20 +1,82 @@
-/********************************************
- *
- * 文件注释，说明文件名称和文件所包含内容
- * @file detail.less
- * @author shangwenhe
- * @create time 2015年10月29日05:29
- * @version {版本信息}  v0.0.1
- *
- * ////////////////////////////////////////
- *
- * @require './detail.js'
- * @describe  描述文件
- * @Modification time
- *
-************************************************/
-		
-.detail { 
-    display: block;
-    width: 100%;
+/**
+ * @file:
+ * @FileName: detail.less
+ * @author: shangwenhe@baidu.com
+ * @date: 2015-08-14  11:02
+ * @description: this is a new file
+ */
+
+.mod-detail {
+    padding-bottom:50px;
+    .word-info {
+        .detail-info {
+            text-align: left;
+            line-height: 2.5em;
+            font-family: '微软雅黑';
+            h2 {
+                font-size: 2em;
+                span {
+                    display: block;
+                    font-size: 0.5em;
+                }
+            }
+            .detail-name,
+            .fromto,
+            .sample {
+                margin: 1em;
+            }
+            .detail-name {
+                background: #07b2d9;
+                color: #fff;
+                border-radius: 2px;
+                position: relative;
+                h2 {
+                    padding: 0.4em 0.4em 0.2em;
+                    i{
+                        font-size:0.4em;
+                        font-style:normal;
+                        margin-left: 0.5em;
+                        color:#90E0F2;
+                    }
+                }
+                .analysis {
+                    background: #06acd6;
+                    padding: 0.8em;
+                }
+                .share {
+                    position: absolute;
+                    right: 0.8em;
+                    top: 0.8em;
+                    background: url('./share.png') no-repeat center center;
+                    display: block;
+                    width: 3em;
+                    height: 3em;
+                    background-size:2.5em auto;
+                    color: transparent;
+                }
+            }
+            .fromto,
+            .sample {
+                padding: 0.8em;
+                background: #fff;
+                border-radius: 2px;
+                div {
+                    color: #42bf9d;
+                    border-bottom: 1px solid #dfdfe0;
+                }
+            }
+        }
+    }
+    .rand-word {
+        height: 30px;
+        width: 80px;
+        margin: 0 auto;
+        background: url(./shuffle.png) no-repeat center bottom;
+        background-size: 52px 21px;
+        opacity: 0.7;
+        line-height: 30px;
+        text-align:center;
+        padding-bottom: 1.1em;
+        color:#999;
+    }
 }

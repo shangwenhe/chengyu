@@ -10,14 +10,15 @@
 /* eslint-disable fecs-camelcase */
 
 
+
 emitter.on('render:index', function (params, callback) {
     typeof callback==='function' && callback({title:'index'});
 });
 
 
-require('./list.js');
-require('./page.js');
-require('./recommend.js');
-require('./search.js');
+require('./list');
+require('./page');
+require('./recommend');
+require('./search');
 
 /* eslint-enable fecs-camelcase */

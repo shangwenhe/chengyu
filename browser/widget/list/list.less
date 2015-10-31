@@ -1,20 +1,38 @@
-/********************************************
- *
- * 文件注释，说明文件名称和文件所包含内容
- * @file list.less
- * @author shangwenhe
- * @create time 2015年10月29日05:29
- * @version {版本信息}  v0.0.1
- *
- * ////////////////////////////////////////
- *
- * @require './list.js'
- * @describe  描述文件
- * @Modification time
- *
-************************************************/
-		
-.list { 
-    display: block;
-    width: 100%;
+/**
+ * @file:
+ * @FileName: list.less
+ * @author: shangwenhe@baidu.com
+ * @date: 2015-08-15  22:54
+ * @description: this is a new file
+ */
+
+.mod-list {
+    margin: 0.8em;
+    background: #fff;
+    li {
+        line-height: 1.8em;
+        height: 3.6em;
+        padding: 0.8em;
+        position: relative;
+        &:nth-child(odd) {
+            background-color: #dbf8ff;
+        }
+        span {
+            position: absolute;
+            right: 0.8em;
+            top: 0.8em;
+        }
+        a {
+            display: block;
+            font-size: 1.2em;
+            text-decoration: none;
+            color: #333;
+            i {
+                display: block;
+                font-style: normal;
+                font-size: 0.5em;
+                color: #999;
+            }
+        }
+    }
 }

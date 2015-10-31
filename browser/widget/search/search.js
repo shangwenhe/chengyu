@@ -1,33 +1,68 @@
-/********************************************
- *
- * 文件注释，说明文件名称和文件所包含内容
- * @file search.js
- * @author shangwenhe
- * @create time 2015年10月29日05:29
- * @version {版本信息}  v0.0.1
- *
- * ////////////////////////////////////////
- *
- * @describe define search function
- * @require './search.less'
- * @return  {function}
- * @Modification time
- *
- *********************************************/
+/**
+ * @file:
+ * @FileName: search.js
+ * @author: shangwenhe@baidu.com
+ * @date: 2015-08-15  18:46
+ * @description: this is a new file
+ */
 
 
-var tmpl = __inline('./search.tmpl');
+// widget/search/search.js start
+
+var sugglistTmpl = __inline('./search.tmpl');
 
 
-// search function 构造函数
-function search() {
+function getSugg(key) {
+    $.ajax({
+        url: 'http://www.yiajie.com/search',
+        data: {
+            k: $.trim(key)
+        },
+        dataType: 'jsonp',
+        success: function (sugglist) {
+            var list = sugglistTmpl({
+                sug: sugglist
+            });
+            $('.sugge').show().html(list);
+        },
+        error: function () {
 
+        }
+
+    })
 }
 
 
-// search 原型扩展
-search.prototype = {
-    constructor: search
-};
+var leftValue = '95px';
+var modSearch = $('.mod-search');
+var t ;
+module.exports = {
+    init: function () {
+        $('.search-value').on('keyup', function (e) {
+            var value = $(this).val();
+            if (e.keyCode === 13) {} else {
+                getSugg(value);
+            }
+        }).on('focus', function () {
+            clearTimeout(t);
+            modSearch.css('left', '10px');
+        }).on('blur', function () {
+            t = setTimeout(function () {
+                modSearch.css('left', leftValue);
+                $('.sugge').hide();
+            }, 4000);
+        });
+    },
+    sugg: function (getDataByName) {
+        $('.sugge').on('click', 'a', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var value = $(this).text();
+            $('.search-value').val(value);
+            getDataByName(value);
+            $(this).parents('.sugge').hide();
+            modSearch.css('left', leftValue);
 
-module.exports = exports.search = search;
+        });
+    }
+};

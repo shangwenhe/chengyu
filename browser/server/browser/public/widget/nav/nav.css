@@ -1,0 +1,56 @@
+/**
+ * @file:
+ * @FileName: nav.less
+ * @author: shangwenhe@baidu.com
+ * @date: 2015-08-14  09:11
+ * @description: this is a new file
+ */
+.mod-nav {
+  width: 43px;
+  height: 45px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.mod-nav .nav-bar {
+  width: 23px;
+  height: 2px;
+  border-radius: 3px;
+  background: #fff;
+  position: absolute;
+  display: block;
+  margin: 0;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  left: 10px;
+  top: 21px;
+}
+.mod-nav .nav-bar:after {
+  width: 23px;
+  height: 2px;
+  border-radius: 3px;
+  background: #fff;
+  position: absolute;
+  display: block;
+  margin: 0;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  left: 10px;
+  top: 21px;
+  content: '';
+  top: -7px;
+  left: 0;
+}
+.mod-nav .nav-bar:before {
+  width: 23px;
+  height: 2px;
+  border-radius: 3px;
+  background: #fff;
+  position: absolute;
+  display: block;
+  margin: 0;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  left: 10px;
+  top: 21px;
+  content: '';
+  top: 7px;
+  left: 0;
+}

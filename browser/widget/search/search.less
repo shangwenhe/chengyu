@@ -1,20 +1,61 @@
-/********************************************
- *
- * 文件注释，说明文件名称和文件所包含内容
- * @file search.less
- * @author shangwenhe
- * @create time 2015年10月29日05:29
- * @version {版本信息}  v0.0.1
- *
- * ////////////////////////////////////////
- *
- * @require './search.js'
- * @describe  描述文件
- * @Modification time
- *
-************************************************/
-		
-.search { 
-    display: block;
-    width: 100%;
+/**
+ * @file:
+ * @FileName: search.less
+ * @author: shangwenhe@baidu.com
+ * @date: 2015-08-14  09:45
+ * @description: this is a new file
+ */
+
+.mod-search {
+    position: absolute;
+    left: 95px;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    height: 45px;
+    -webkit-transition: left .3s ease-in;
+    -moz-transition: left .3s ease-in;
+    -ms-transition: left .3s ease-in;
+    transition: left .3s ease-in;
+    .search-box {
+        border: none;
+        border-radius: 2px;
+        background: #fff;
+        width: 100%;
+        margin-top: 9px;
+        height: 28px;
+        .search-value {
+            height: 26px;
+            text-indent: 0.3em;
+            border: none;
+            border-radius: 2px;
+            background: #fff;
+            width: 99%;
+            outline: none;
+        }
+    }
+    .sugge {
+        background: #fff;
+        width: 100%;
+        display: none;
+        li {
+            list-style: none;
+            height: 2em;
+            line-height: 2em;
+            padding: 0.4em 0.8em;
+            a {
+                font-size: 1.5em;
+                color: #333;
+                text-decoration: none;
+                display: block;
+                margin-right: 10em;
+            }
+            &:nth-child(odd) {
+                background-color: #dbf8ff;
+            }
+            span {
+                float: right;
+            }
+        }
+    }
 }

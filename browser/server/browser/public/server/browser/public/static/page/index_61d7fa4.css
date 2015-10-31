@@ -1,0 +1,32 @@
+/**
+ * @file:
+ * @FileName: index.less
+ * @author: shangwenhe@baidu.com
+ * @date: 2015-08-14  08:56
+ * @description: this is a new file
+ */
+body {
+  background-color: #f2f2f2;
+}
+.mod-head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+.mod-head .mod-log {
+  width: 50px;
+  margin-left: 38px;
+  height: 45px;
+  text-align: center;
+  color: #fff;
+  font: 200 20px/45px '微软雅黑';
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.mod-con {
+  padding-top: 50px;
+}
+.mod-con-head {
+  position: relative;
+}

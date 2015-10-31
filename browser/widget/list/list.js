@@ -1,33 +1,37 @@
-/********************************************
- *
- * 文件注释，说明文件名称和文件所包含内容
- * @file list.js
- * @author shangwenhe
- * @create time 2015年10月29日05:29
- * @version {版本信息}  v0.0.1
- *
- * ////////////////////////////////////////
- *
- * @describe define list function
- * @require './list.less'
- * @return  {function}
- * @Modification time
- *
- *********************************************/
+/**
+ * @file:
+ * @FileName: list.js
+ * @author: shangwenhe@baidu.com
+ * @date: 2015-08-15  22:16
+ * @description: this is a new file
+ */
 
 
-var tmpl = __inline('./list.tmpl');
+// list/list.js start
+var listTmpl = __inline('./list.tmpl');
 
-
-// list function 构造函数
-function list() {
-
+function getlist(param) {
+    $.ajax({
+        url: 'http://www.yiajie.com/list',
+        data: param,
+        dataType: 'jsonp',
+        success: function (data) {
+            var list = listTmpl({
+                list: data
+            });
+            $('.mod-list').html(list);
+        },
+        error: function () {}
+    })
 }
 
-
-// list 原型扩展
-list.prototype = {
-    constructor: list
+module.exports = function () {
+    var getListParam ={page:1};
+    if(/wl=\d*/.test(window.location.href)){
+        getListParam.wl = window.location.href.replace(/^.*wl=(\d*).*$/,'$1');
+    }
+    if(/page=\d*/.test(window.location.href)){
+        getListParam.page = window.location.href.replace(/^.*page=(\d*).*$/,'$1')
+    }
+    getlist(getListParam);
 };
-
-module.exports = exports.list = list;

@@ -1,0 +1,60 @@
+/**
+ * @file:
+ * @FileName: search.less
+ * @author: shangwenhe@baidu.com
+ * @date: 2015-08-14  09:45
+ * @description: this is a new file
+ */
+.mod-search {
+  position: absolute;
+  left: 95px;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  height: 45px;
+  -webkit-transition: left 0.3s ease-in;
+  -moz-transition: left 0.3s ease-in;
+  -ms-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
+}
+.mod-search .search-box {
+  border: none;
+  border-radius: 2px;
+  background: #fff;
+  width: 100%;
+  margin-top: 9px;
+  height: 28px;
+}
+.mod-search .search-box .search-value {
+  height: 26px;
+  text-indent: 0.3em;
+  border: none;
+  border-radius: 2px;
+  background: #fff;
+  width: 99%;
+  outline: none;
+}
+.mod-search .sugge {
+  background: #fff;
+  width: 100%;
+  display: none;
+}
+.mod-search .sugge li {
+  list-style: none;
+  height: 2em;
+  line-height: 2em;
+  padding: 0.4em 0.8em;
+}
+.mod-search .sugge li a {
+  font-size: 1.5em;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  margin-right: 10em;
+}
+.mod-search .sugge li:nth-child(odd) {
+  background-color: #dbf8ff;
+}
+.mod-search .sugge li span {
+  float: right;
+}

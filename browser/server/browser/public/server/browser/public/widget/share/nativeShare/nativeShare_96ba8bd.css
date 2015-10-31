@@ -1,0 +1,76 @@
+/**
+ * Created by Jeffery Wang.
+ * Create Time: 2015-06-16 19:52
+ * Author Link: http://blog.wangjunfeng.com
+ * @require 'chengyu:widget/share/nativeShare/nativeShare.js'
+ */
+#nativeShare {
+  width: 85%;
+  margin: 0 auto;
+  position: absolute;
+  top: 70px;
+  left: 7.5%;
+  background: #fff;
+  font-size: 13px;
+  padding: 0.8em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: none;
+  font-family: '微软雅黑';
+}
+.close-share {
+  background: url('./widget/share/nativeShare/close_3841313.png') no-repeat center center;
+  background-size: 2em auto;
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  width: 3em;
+  height: 3em;
+  display: block;
+}
+#nativeShare .label {
+  font-size: 20px;
+  margin-left: 7px;
+}
+#nativeShare .list {
+  width: 90%;
+  margin: 0 auto;
+}
+#nativeShare .list span {
+  width: 30%;
+  display: inline-block;
+  text-align: center;
+  margin: 10px 0;
+}
+#nativeShare .list span i {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+#nativeShare .weibo i {
+  background-image: url('./widget/share/nativeShare/icon/weibo_c8cdb90.png');
+  background-size: cover;
+}
+#nativeShare .weixin i {
+  background-image: url('./widget/share/nativeShare/icon/weixin_friend_1e06a3b.png');
+  background-size: cover;
+}
+#nativeShare .weixin_timeline i {
+  background-image: url('./widget/share/nativeShare/icon/weixin_308b67f.png');
+  background-size: cover;
+}
+#nativeShare .qq i {
+  background-image: url('./widget/share/nativeShare/icon/qq_13219c8.png');
+  background-size: cover;
+}
+#nativeShare .qzone i {
+  background-image: url('./widget/share/nativeShare/icon/qqzone_65b6a68.png');
+  background-size: cover;
+}
+#nativeShare .more i {
+  background-image: url('./widget/share/nativeShare/icon/more_86b0b7b.png');
+  background-size: cover;
+}
