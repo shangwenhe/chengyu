@@ -9,15 +9,29 @@
 // /home/shangwenhe/github/chengyu/server/controller/index.js start
 /* eslint-disable fecs-camelcase */
 
+var List = require('../module/list');
 
 
 emitter.on('render:index', function (params, callback) {
-    typeof callback==='function' && callback({title:'index'});
+    //  绑定数据库查询事件
+    emitter.once('sql:season', function (err, data) {
+        console.log(data);
+        typeof callback === 'function' && callback({
+            title: '成语大全',
+            data: data
+        });
+    });
+    // 实例化一个列表功能
+    var letterList = new List();
+    letterList.connection();
+    letterList.season();
+    letterList.close();
 });
 
 
+
 require('./list');
-require('./page');
+require('./detail');
 require('./recommend');
 require('./search');
 

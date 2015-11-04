@@ -1,5 +1,10 @@
 // default settings. fis3 release
 
+var fs = require('fs');
+var mFs = require('fs');
+
+
+
 // Global start
 fis.hook('module', {
     mode: 'commonJS'
@@ -18,7 +23,21 @@ fis.set('project.ignore', [
     .match('**.tmpl', {
         parser: fis.plugin('utc'),
         isJsLike: true,
-        release: false
+        release: function (arg) {
+            var readStream = mFs.createReadStream('.' + arg[0]);
+            mFs.unlink('../server/browser/tmpl/' + arg[0], function () {
+                var writeStream = mFs.createWriteStream('../server/browser/tmpl/' + arg[0]);
+                readStream.pipe(writeStream);
+                readStream.on('end', function () {
+                    console.log('copy end');
+                });
+                readStream.on('error', function () {
+                    console.log('copy error');
+                });
+
+            });
+        },
+        rExt: '.tmpl'
     });
 
 fis.match('::image', {
@@ -106,12 +125,17 @@ fis.match('**.{less,css}', {
             to: '../server/browser/views/'
         })
     })
+    .match('**.tmpl', {
+        deploy: fis.plugin('local-deliver', {
+            to: '../server/browser/tmpl/'
+        })
+    })
     .match('*.{eot,svg,ttf,woff,woff2}', {
         deploy: fis.plugin('local-deliver', {
             to: '../server/browser/public/font/'
         })
     });
-    
+
 
 
 

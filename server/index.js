@@ -16,6 +16,7 @@ globals = {};
 // 全局事件中心
 var events = require('events');
 global.emitter = new events.EventEmitter();
+global.util = require('util');
 
 var path = require('path');
 

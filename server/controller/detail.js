@@ -1,15 +1,15 @@
 /**
- * @file: page.js
+ * @file: detail.js
  * @author: shangwenhe@baidu.com
  * @date: 2015-10-30 19:34
  * @description: this is a <js> file
  */
 /* globals __inline __uri */
 
-// /home/shangwenhe/github/chengyu/server/controller/page.js start
+// /home/shangwenhe/github/chengyu/server/controller/detail.js start
 /* eslint-disable fecs-camelcase */
 
-emitter.on('render:page', function (params, callback) {
+emitter.on('render:detail', function (params, callback) {
     typeof callback==='function' && callback({title:'index'});
 });
 
