@@ -17,28 +17,30 @@ function List() {}
 
 // List继承于Module
 util.inherits(List, Module);
-List.prototype.select = function (sql, emitEvent) {
-    this.connect.query(sql, function () {
-        // 序列化参数列表
-        var arg = Array.prototype.slice.call(arguments, 0);
-        arg.unshift(emitEvent);
-        // apply给回调添加参数
-        emitter.emit.apply(emitter, arg);
-    });
-}
-List.prototype.season = function () {
+List.prototype.season = function (callback) {
     function random() {
         return parseInt(Math.random() * 24895);
     }
     var ids = [
-        random(), random(), random(), random(),
-        random(), random(), random(), random(),
-        random(), random(), random(), random(),
-        random(), random(), random(), random(),
+        random(), random(), random(), 
+        random(), random(), random()
     ];
-    this.select('SELECT * FROM `CY_name` WHERE `id` in (' + ids.join(',') + ') ', 'sql:season');
+    this.select('SELECT * FROM `CY_name` WHERE `id` in (' + ids.join(',') + ') ', callback);
 
 }
+
+
+emitter.on('sql:season', function (callback) {
+
+    // 实例化一个列表功能
+    var letterList = new List();
+    letterList.connection();
+    letterList.season(function () {
+        callback && callback.apply(null, Array.prototype.slice.call(arguments, 0, 2));
+        letterList.close();
+    });
+
+});
 
 module.exports = List;
 /* eslint-enable fecs-camelcase */

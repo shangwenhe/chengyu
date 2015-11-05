@@ -16,7 +16,15 @@ function routerHook(router, req, res) {
         req: req,
         res: res
     }, function (data) {
-        res.render('chengyu/' + router, data);
+        if (data.format === 'json') {
+            var jsonData = JSON.stringify(data);
+            if (!!data.callback) {
+                jsonData = data.callback + '(' + jsonData + ')'
+            }
+            res.send(jsonData);
+        } else {
+            res.render('chengyu/' + router, data);
+        }
     });
 }
 

@@ -17,6 +17,8 @@ globals = {};
 var events = require('events');
 global.emitter = new events.EventEmitter();
 global.util = require('util');
+global.async = require('async');
+global._ = require('underscore');
 
 var path = require('path');
 

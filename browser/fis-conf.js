@@ -1,9 +1,32 @@
 // default settings. fis3 release
 
-var fs = require('fs');
+
 var mFs = require('fs');
+var events = require("events");
+var fileEvent = new events.EventEmitter;
+fileEvent.on('file:create', function (mFs, originFile, disFile) {
+    var readStream = mFs.createReadStream(originFile);
+    var writeStream = mFs.createWriteStream(disFile);
+    readStream.pipe(writeStream);
+    readStream.on('end', function () {
+        //  console.log('copy end');
+    });
+    readStream.on('error', function () {
+        //  console.log('copy error');
+    });
 
+});
+fileEvent.on('file:exists', function (mFs, path, existsCallback, noneCallback) {
+    mFs.exists(path, function (exists) {
+        // exists为真文件存在
+        if (exists) {
+            existsCallback(path);
+        } else {
+            noneCallback(path);
+        }
+    });
 
+});
 
 // Global start
 fis.hook('module', {
@@ -24,20 +47,27 @@ fis.set('project.ignore', [
         parser: fis.plugin('utc'),
         isJsLike: true,
         release: function (arg) {
-            var readStream = mFs.createReadStream('.' + arg[0]);
-            mFs.unlink('../server/browser/tmpl/' + arg[0], function () {
-                var writeStream = mFs.createWriteStream('../server/browser/tmpl/' + arg[0]);
-                readStream.pipe(writeStream);
-                readStream.on('end', function () {
-                    console.log('copy end');
-                });
-                readStream.on('error', function () {
-                    console.log('copy error');
-                });
 
+            var disFile = '../server/browser/views/chengyu' + arg[0];
+            var originFile = '.' + arg[0];
+
+            fileEvent.emit('file:exists', mFs, disFile, function () {
+                mFs.unlink(disFile, function (err) {
+                    fileEvent.emit('file:create', mFs, originFile, disFile);
+                });
+            }, function () {
+                var disPath = /(.*)\/[^\/]*\.tmpl/.exec(disFile);
+                fileEvent.emit('file:exists', mFs, disPath[1], function () {
+                    fileEvent.emit('file:create', mFs, originFile, disFile);
+
+                }, function () {
+                    mFs.mkdir(disPath[1], function (err) {
+                        fileEvent.emit('file:create', mFs, originFile, disFile);
+                        if (err) {}
+                    });
+                });
             });
-        },
-        rExt: '.tmpl'
+        }
     });
 
 fis.match('::image', {
@@ -120,14 +150,14 @@ fis.match('**.{less,css}', {
             to: '../server/browser/public/'
         })
     })
+    .match('**.tmpl', {
+        deploy: fis.plugin('local-deliver', {
+            to: '../server/browser/views/chengyu/'
+        })
+    })
     .match('page/**.html', {
         deploy: fis.plugin('local-deliver', {
             to: '../server/browser/views/'
-        })
-    })
-    .match('**.tmpl', {
-        deploy: fis.plugin('local-deliver', {
-            to: '../server/browser/tmpl/'
         })
     })
     .match('*.{eot,svg,ttf,woff,woff2}', {

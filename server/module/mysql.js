@@ -45,8 +45,11 @@ Module.prototype.insert = function () {
     return 'insert';
 };
 // 数据选择
-Module.prototype.select = function () {
-    return 'select';
+Module.prototype.select = function (sql, callback) {
+    this.connect.query(sql, function () {
+        // 序列化参数列表
+        callback.apply(null, Array.prototype.slice.call(arguments, 0));
+    });
 };
 // 数据删除
 Module.prototype.drop = function () {};

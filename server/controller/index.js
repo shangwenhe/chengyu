@@ -9,23 +9,30 @@
 // /home/shangwenhe/github/chengyu/server/controller/index.js start
 /* eslint-disable fecs-camelcase */
 
-var List = require('../module/list');
+require('../module/list');
+require('../module/detail');
 
+// var arg = Array.prototype.slice.call(arguments, 0);
 
 emitter.on('render:index', function (params, callback) {
     //  绑定数据库查询事件
-    emitter.once('sql:season', function (err, data) {
-        console.log(data);
+    async.parallel([
+        //  异步并行执行
+        function (callback) {
+            emitter.emit('sql:detail', callback);
+        },
+        function (callback) {
+            emitter.emit('sql:season', callback);
+        }
+    ], function (err, arg) {
         typeof callback === 'function' && callback({
             title: '成语大全',
-            data: data
+            data: arg[0],
+            season: arg[1],
+            callback: params.query.callback || false,
+            format: params.query.format || false
         });
     });
-    // 实例化一个列表功能
-    var letterList = new List();
-    letterList.connection();
-    letterList.season();
-    letterList.close();
 });
 
 
