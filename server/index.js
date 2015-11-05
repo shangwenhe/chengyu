@@ -63,7 +63,7 @@ app.get('/list/:id', router.list);
 // 推荐入口
 app.get('/recommend/', router.recommend);
 // 详细内容
-app.get('/page/:id', router.page);
+app.get('/detail/:id', router.detail);
 
 
 // 当以上所有路由都无法接入时进入下列路由中

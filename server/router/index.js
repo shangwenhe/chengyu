@@ -48,8 +48,8 @@ module.exports = {
     },
 
     // 详细内容
-    page: function (req, res) {
-        res.send(req.params.id)
+    detail: function (req, res) {
+        routerHook('detail', req, res);
     },
     // 推荐入口
     recommend: function (req, res) {

@@ -77,7 +77,7 @@ fis.match('::image', {
     })
 });
 fis.match('**', {
-    domain: '.'
+    domain: ''
 });
 
 fis.match('**.js', {

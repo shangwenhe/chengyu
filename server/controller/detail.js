@@ -10,7 +10,15 @@
 /* eslint-disable fecs-camelcase */
 
 emitter.on('render:detail', function (params, callback) {
-    typeof callback==='function' && callback({title:'index'});
+    emitter.emit('sql:getInfoById', params.params.id, function (err, data, mk) {
+        typeof callback === 'function' && callback({
+            title: 'index',
+            callback: params.query.callback || false,
+            format: params.query.format || false,
+            data:data
+        });
+
+    });
 });
 
 /* eslint-enable fecs-camelcase */
