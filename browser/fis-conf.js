@@ -71,7 +71,10 @@ fis.set('project.ignore', [
     });
 
 fis.match('::image', {
-    useHash: true
+    useHash: true,
+    deploy: fis.plugin('local-deliver', {
+        to: '../server/browser/public/'
+    })
 });
 fis.match('**', {
     domain: '.'

@@ -14,10 +14,13 @@
   "dependencies":{
     "express": "*",
     "ejs": "*",
-    "mysql":"*"
+    "mysql":"*",
+    "async":"*",
+    "underscore":"*"
   },
   "bugs":{
     "url":"https://github.com/shangwenhe/chengyu-server/issues"
   },
   "homepage":"http:www.yiajie.com"
 }
+
