@@ -1,0 +1,15 @@
+<div class="wc-list">
+    <% if(data.length){ %>
+        <% data.forEach(function(item){ %>
+            <article class='detail-info'>
+                <div class="detail-name">
+                    <a href='/detail/<%=item.id%>'>
+                        <h2><%= item.name%><i>浏览<%=item.views%>次</i><img src='./link.gif'
+                            class='link-icon' /><span> <%= item.soundLetter%></span></h2>
+                        <p class='analysis'>解析：<%=item.analysis%></p>
+                    </a>
+                </div>
+            </article>
+        <% }) %>
+    <% } %>
+</div>

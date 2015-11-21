@@ -19,14 +19,14 @@ emitter.on('render:index', function (params, callback) {
     async.parallel([
         //  异步并行执行
         function (callback) {
-            emitter.emit('sql:detail', callback);
+            emitter.emit('sql:detail', params.query.id, callback);
         },
         function (callback) {
             emitter.emit('sql:season', callback);
         }
     ], function (err, arg) {
         typeof callback === 'function' && callback({
-            title: '成语大全',
+            title: arg[0][0] && arg[0][0]['name'] || '成语大全',
             data: arg[0],
             season: arg[1],
             callback: params.query.callback || false,
@@ -40,6 +40,18 @@ emitter.on('render:index', function (params, callback) {
 require('./list');
 require('./detail');
 require('./recommend');
+
+// 搜索结果
+require('../module/search');
 require('./search');
+
+// 格言
+require('../module/geyan');
+require('./geyan');
+
+// 取出指定个数的成语
+require('../module/wordcount');
+require('./wordcount');
+
 
 /* eslint-enable fecs-camelcase */

@@ -8,7 +8,7 @@
 
 
 // share/share.js start
-
+var $ = require('chengyu:components/jquery/jquery');
 var nativeShare = require('chengyu:widget/share/nativeShare/nativeShare.js');
 
 

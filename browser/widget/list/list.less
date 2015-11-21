@@ -7,31 +7,47 @@
  */
 
 .mod-list {
-    margin: 0.8em;
-    background: #fff;
-    li {
-        line-height: 1.8em;
-        height: 3.6em;
-        padding: 0.8em;
-        position: relative;
-        &:nth-child(odd) {
-            background-color: #dbf8ff;
-        }
-        span {
-            position: absolute;
-            right: 0.8em;
-            top: 0.8em;
-        }
-        a {
-            display: block;
-            font-size: 1.2em;
-            text-decoration: none;
-            color: #333;
-            i {
+    .detail-info {
+        text-align: left;
+        line-height: 2.5em;
+        font-family: '微软雅黑';
+        h2 {
+            font-size: 1.3em;
+                color: #fff;
+            span {
                 display: block;
-                font-style: normal;
                 font-size: 0.5em;
-                color: #999;
+            }
+        }
+        .detail-name,
+        .fromto,
+        .sample {
+            margin: 1em;
+        }
+        .detail-name {
+            background: #07b2d9;
+            color: #fff;
+            border-radius: 2px;
+            position: relative;
+            h2 {
+                padding: 0.4em 0.8em 0.2em;
+                i {
+                    font-size: 0.4em;
+                    font-style: normal;
+                    margin-left: 0.5em;
+                    color: #90E0F2;
+                }
+            }
+            .analysis {
+                background: #fff;
+                color: #666;
+                padding: 0.8em;
+            }
+            .link-icon{
+                position: absolute;
+                right: 17px;
+                top: 15px;
+                opacity: 0.7;
             }
         }
     }

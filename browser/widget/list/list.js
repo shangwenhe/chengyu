@@ -7,6 +7,8 @@
  */
 
 
+var $ = require('chengyu:components/jquery/jquery');
+var _ = require('chengyu:components/underscore/underscore');
 // list/list.js start
 var listTmpl = __inline('./list.tmpl');
 
@@ -33,5 +35,5 @@ module.exports = function () {
     if(/page=\d*/.test(window.location.href)){
         getListParam.page = window.location.href.replace(/^.*page=(\d*).*$/,'$1')
     }
-    getlist(getListParam);
+    //  getlist(getListParam);
 };

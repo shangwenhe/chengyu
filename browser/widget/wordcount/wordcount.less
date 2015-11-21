@@ -1,0 +1,48 @@
+/********************************************
+ *
+ * 文件注释，说明文件名称和文件所包含内容
+ * @file wordcount.less
+ * @author shangwenhe
+ * @create time 2015年11月21日02:09
+ * @version {版本信息}  v0.0.1
+ *
+ * ////////////////////////////////////////
+ *
+ * @require './wordcount.js'
+ * @describe  描述文件
+ * @Modification time
+ *
+************************************************/
+
+.wordcount {
+    display: block;
+    width: 100%;
+    .wordcount-tmpl {
+        margin: 0.8em;
+        background: #fff;
+        li {
+            line-height: 1.8em;
+            height: 3.6em;
+            padding: 0.8em;
+            &:nth-child(odd) {
+                background-color: #dbf8ff;
+            }
+            span {
+                float: right
+            }
+            a {
+                display: block;
+                margin-right: 9em;
+                font-size: 1.2em;
+                text-decoration: none;
+                color: #333;
+                i {
+                    display: block;
+                    font-style: normal;
+                    font-size: 0.5em;
+                    color: #999;
+                }
+            }
+        }
+    }
+}

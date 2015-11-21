@@ -1,0 +1,14 @@
+<!--  wordcount.tmpl -->
+<ul class='wordcount-tmpl'>
+    <% _.each(data, function(item, index){ %>
+        <li>
+            <span>共浏览<%=item.views%>次</span>
+            <a href='/detail/<%=item.id%>' target="_blank">
+                <i><%=item.indexName%></i>
+                <%=item.name%>
+            </a>
+        </li>
+        <% }) %>
+</ul>
+
+

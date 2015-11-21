@@ -28,7 +28,7 @@ Detail.prototype.getInfoById = function (id, callback) {
                 });
         },
         function (callback) {
-            me.select('SELECT soundLetter,analysis,sample,fromto,synonyms,antonym,holding \
+            me.select('SELECT soundLetter,analysis,sample,fromto,synonyms,antonym,holding,id \
             FROM `CY_analysis` WHERE id=' + id,
                 function () {
                     callback.apply(null, Array.prototype.slice.call(arguments, 0, 2))
@@ -43,6 +43,7 @@ Detail.prototype.getInfoById = function (id, callback) {
         var info = arg[1][0];
         result.push({
             name: item.name,
+            id: info.id,
             sound: info.soundLetter,
             analysis: info.analysis,
             sample: info.sample,
@@ -59,50 +60,6 @@ Detail.prototype.getInfoById = function (id, callback) {
 }
 
 
-Detail.prototype.randomGetInfo = function (callback) {
-    var len = 1;
-    var me = this;
-    var result = [];
-
-    me.select('SELECT * FROM `CY_name` \
-    WHERE id >= (SELECT floor(RAND() * (SELECT MAX(id) FROM `CY_name`))) \
-        ORDER BY id LIMIT ' + len, function (err, item) {
-        var key = 0;
-
-        // 从数据中取得关联数据的详细内容
-        me.select('SELECT soundLetter,analysis,sample,fromto,synonyms,antonym,holding FROM `CY_analysis` WHERE id=' + item[key].relationId,
-            function (err, info) {
-                info = info[0];
-                result.push({
-                    name: item[key].name,
-                    sound: info.soundLetter,
-                    analysis: info.analysis,
-                    sample: info.sample,
-                    fromto: info.fromto,
-                    synonyms: info.synonyms,
-                    antonym: info.antonym,
-                    holding: info.holding,
-                    views: item[key].views
-                });
-                callback && callback.apply(null, [err, result]);
-            });
-    });
-}
-
-
-emitter.on('sql:detail', function (callback) {
-
-    // 实例化一个列表功能
-    var itemInfo = new Detail();
-    itemInfo.connection();
-    itemInfo.randomGetInfo(function () {
-        callback && callback.apply(null, Array.prototype.slice.call(arguments, 0));
-        itemInfo.close();
-        // 销毁实例
-        itemInfo = undefined;
-    });
-});
-
 emitter.on('sql:getInfoById', function (id, callback) {
     // 实例化一个列表功能
     var itemInfo = new Detail();
@@ -113,6 +70,10 @@ emitter.on('sql:getInfoById', function (id, callback) {
         // 销毁实例
         itemInfo = undefined;
     });
+});
+
+emitter.on('sql:detail', function (id, callback) {
+    emitter.emit('sql:getInfoById', !isNaN(id) ? id : 200, callback);
 });
 module.exports = Detail;
 /* eslint-enable fecs-camelcase */

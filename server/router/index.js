@@ -44,7 +44,7 @@ module.exports = {
     },
     // list列表页
     list: function (req, res) {
-        res.send(req.params.id)
+        routerHook('list', req, res);
     },
 
     // 详细内容
@@ -54,6 +54,14 @@ module.exports = {
     // 推荐入口
     recommend: function (req, res) {
 
+    },
+    // 格言
+    geyan: function (req, res) {
+        routerHook('geyan', req, res);
+    },
+    // 取出指定个数的成语
+    wordcount: function (req, res) {
+        routerHook('wordcount', req, res);
     }
 };
 /* eslint-enable fecs-camelcase */

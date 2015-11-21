@@ -1,0 +1,22 @@
+<!--  geyan.tmpl -->
+<ul class='geyan-head'>
+    <% _.each([ '人生格言', '读书名言', '名言警句', '励志名言' ],function(val, key){ %>
+    <li class='sub-nav<% if(val === title){ %> active<% } %>'>
+            <a href='/geyan/<%= key+1 %>'>
+                <%=val %> 
+            </a>
+        </li>
+    <% }) %>
+</ul>
+<div class='geyan-con'>
+    <ul class='geyan-tmpl'>
+        <% _.each(data.geyan,function(val, key){ %>
+            <li>
+                <%=key+1 %>、 <%- val.con %>
+                        <% if(val.author && val.author !=='null' ){ %>--作者：<%- val.author %><% } %>
+            </li>
+        <% }) %>
+    </ul>
+</div>
+
+

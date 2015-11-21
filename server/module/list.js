@@ -22,11 +22,14 @@ List.prototype.season = function (callback) {
         return parseInt(Math.random() * 24895);
     }
     var ids = [
-        random(), random(), random(), 
+        random(), random(), random(),
         random(), random(), random()
     ];
     this.select('SELECT * FROM `CY_name` WHERE `id` in (' + ids.join(',') + ') ', callback);
 
+}
+List.prototype.getList = function (callback) {
+    this.select('SELECT a.`id`,g.`name`,g.`views`, a.`soundLetter`, a.`analysis`, a.`sample` FROM `CY_analysis` as a,`CY_name` as g where a.`id`=g.`relationId` limit 20', callback);
 }
 
 
@@ -42,5 +45,13 @@ emitter.on('sql:season', function (callback) {
 
 });
 
-module.exports = List;
+emitter.on('sql:getList', function (id, callback) {
+    // 实例化一个列表功能
+    var letterList = new List();
+    letterList.connection();
+    letterList.getList(function () {
+        callback && callback.apply(null, Array.prototype.slice.call(arguments, 0, 2));
+        letterList.close();
+    });
+});
 /* eslint-enable fecs-camelcase */

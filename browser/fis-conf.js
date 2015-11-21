@@ -99,9 +99,11 @@ fis.match('{mod,jquery,underscore}.js', {
     requires: []
 });
 fis.match('jquery.js', {
+    isMod: true, // 标记为非组件
     packOrder: -99
 });
 fis.match('underscore.js', {
+    isMod: true, // 标记为非组件
     packOrder: -98
 });
 fis.match('Event.js', {

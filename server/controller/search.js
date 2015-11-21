@@ -10,7 +10,24 @@
 /* eslint-disable fecs-camelcase */
 
 emitter.on('render:search', function (params, callback) {
-    typeof callback==='function' && callback({title:'search'});
+    params.params.name === 'name' && emitter.emit('sql:search',
+        params.query.name, function (err, data, mk) {
+            typeof callback === 'function' && callback({
+                title: 'search:name',
+                callback: params.query.callback || false,
+                format: params.query.format || false,
+                data: data
+            });
+        });
+    params.params.name === 'letter' && emitter.emit('sql:searchByLetter',
+        params.query.name, function (err, data, mk) {
+            typeof callback === 'function' && callback({
+                title: 'search:letter',
+                callback: params.query.callback || false,
+                format: params.query.format || false,
+                data: data
+            });
+        });
 });
 
 /* eslint-enable fecs-camelcase */

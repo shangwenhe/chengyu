@@ -11,7 +11,6 @@
 //  配置文件
 var conf = require('./conf/config');
 // 注册全局变量
-globals = {};
 
 // 全局事件中心
 var events = require('events');
@@ -64,6 +63,10 @@ app.get('/list/:id', router.list);
 app.get('/recommend/', router.recommend);
 // 详细内容
 app.get('/detail/:id', router.detail);
+// 格言
+app.get('/geyan/:id', router.geyan);
+// 取出指定个数的成语
+app.get('/wordcount/:len', router.wordcount);
 
 
 // 当以上所有路由都无法接入时进入下列路由中

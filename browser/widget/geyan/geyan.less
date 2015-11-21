@@ -1,0 +1,53 @@
+/********************************************
+ *
+ * 文件注释，说明文件名称和文件所包含内容
+ * @file geyan.less
+ * @author shangwenhe
+ * @create time 2015年11月20日06:39
+ * @version {版本信息}  v0.0.1
+ *
+ * ////////////////////////////////////////
+ *
+ * @require './geyan.js'
+ * @describe  描述文件
+ * @Modification time
+ *
+************************************************/
+
+.geyan {
+    display: block;
+    width: 100%;
+    &-head {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        li {
+            float: left;
+            width: 25%;
+            flex: 1;
+            text-align: center;
+            overflow: hidden;
+            font-size: 14px;
+            border-bottom: 1px solid #c1c1c1;
+            a {
+                display: block;
+                height: 35px;
+                line-height: 35px;
+                color: #333;
+            }
+        }
+        .active {
+            border-bottom: 1px solid #3383fc;
+            a {
+                color: #2B8CFF;
+            }
+        }
+    }
+    &-con {
+        li {
+            line-height: 30px;
+            border-bottom: 1px solid #ddd;
+            padding: 0.5em;
+        }
+    }
+}

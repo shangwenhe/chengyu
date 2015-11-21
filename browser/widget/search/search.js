@@ -8,20 +8,21 @@
 
 
 // widget/search/search.js start
-
+var $ = require('chengyu:components/jquery/jquery');
 var sugglistTmpl = __inline('./search.tmpl');
 
 
 function getSugg(key) {
     $.ajax({
-        url: 'http://www.yiajie.com/search',
+        url: '/search/letter',
         data: {
-            k: $.trim(key)
+            name: $.trim(key),
+            format: 'json'
         },
         dataType: 'jsonp',
         success: function (sugglist) {
             var list = sugglistTmpl({
-                sug: sugglist
+                sug: sugglist.data
             });
             $('.sugge').show().html(list);
         },
@@ -35,7 +36,7 @@ function getSugg(key) {
 
 var leftValue = '95px';
 var modSearch = $('.mod-search');
-var t ;
+var t;
 module.exports = {
     init: function () {
         $('.search-value').on('keyup', function (e) {

@@ -2,7 +2,10 @@
     @require './list.less'
     @require './list.js'
 -->
-<ul class='mod-list'></ul>
+<ul class='mod-list'>
+        <% var  data = data.list %>
+        <link rel="import" href="./listlinner.html?__inline" >
+</ul>
 
 <script type="text/javascript">
     require.async('chengyu:widget/list/list',function(list){

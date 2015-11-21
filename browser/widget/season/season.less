@@ -16,27 +16,50 @@
 
 .season {
     display: block;
-    
+    .section-head {
+        a {
+            float: right;
+            font-size: 12px;
+        }
+    }
     .season-body {
         line-height: 21px;
         width: 100%;
         overflow: hidden;
-        a,span{
+        a, span {
             display: block;
-            overflow:hidden;
+            overflow: hidden;
         }
         a {
             width: 50%;
             float: left;
-            height:42px;
+            height: 42px;
             margin-top: 8px;
-            color:#3083fd;
+            color: #3083fd;
         }
         span {
             width: 100%;
             height: 20px;
             line-height: 20px;
-            color:#666;
+            color: #666;
         }
+    }
+}
+.index-geyan {
+    overflow: hidden;
+    display: flex;
+    height: 30px;
+    padding: 0  0.8em 0.8em; 
+    a {
+        flex: 1;
+        display: block;
+        width: 25%;
+        float: left;
+        text-align: center;
+        border: 1px solid #fff;
+        background: #42bf9d;
+        height: 30px;
+        line-height: 30px;
+        color: #fff;
     }
 }
