@@ -198,7 +198,7 @@ fis.media('pro')
         optimizer: fis.plugin('uglify-js'),
         packTo: '/pkg/widget.js'
     })
-    .match('/{static,components}/**.{less,css}', {
+    .match('/{static}/**.{less,css}', {
         optimizer: fis.plugin('clean-css'),
         packTo: '/pkg/static.css'
     })

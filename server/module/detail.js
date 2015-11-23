@@ -17,6 +17,15 @@ function Detail() {}
 // Detail继承于Module
 util.inherits(Detail, Module);
 
+
+Detail.prototype.updateViews = function (info, callback) {
+    this.select('UPDATE `chengyu`.`CY_name` SET `views` = ' + (+info.curviews + 1) +
+        ' WHERE `CY_name`.`relationId` =' + info.id, function (err, items, filed) {
+            typeof callback === 'function' && callback(err, items, filed);
+        });
+
+}
+
 Detail.prototype.getInfoById = function (id, callback) {
     var me = this;
     async.parallel([
@@ -54,8 +63,13 @@ Detail.prototype.getInfoById = function (id, callback) {
             views: item.views
         });
 
-
-        callback && callback.apply(null, [err, result]);
+        // 更新views
+        me.updateViews({
+            curviews: item.views,
+            id: id
+        }, function () {
+            callback && callback.call(null, err, result);
+        });
     });
 }
 
