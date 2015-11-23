@@ -32,14 +32,16 @@ Event.on('geyan:getCatlist', function (cat) {
         dataType: 'jsonp',
         success: function (data) {
             $('.geyan').html(tmpl(data));
+            history.replaceState({}, '', '/geyan/' + cat);
+            document.title = data.title + '-随手成语';
         },
         error: function () {}
     });
 });
 
 $('.geyan').on('click', '.sub-nav a', function (e) {
-        e.preventDefault();
-        var href = $(this).attr('href');
-        var cat = /^\/geyan\/(\d+)$/.exec(href);
-        Event.trigger('geyan:getCatlist',cat[1]) ;
-        });
+    e.preventDefault();
+    var href = $(this).attr('href');
+    var cat = /^\/geyan\/(\d+)$/.exec(href);
+    Event.trigger('geyan:getCatlist', cat[1]);
+});

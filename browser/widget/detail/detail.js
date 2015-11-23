@@ -12,12 +12,12 @@ var search = require('chengyu:widget/search/search');
 var detailHtml = __inline('./detail.tmpl');
 
 // 随机产出一条数据
-function getDataByRand(id,callback) {
+function getDataByRand(id, callback) {
 
     $.ajax({
-        url: '/detail/'+id,
-        data:{
-            format:'json'
+        url: '/detail/' + id,
+        data: {
+            format: 'json'
         },
         dataType: 'jsonp',
         success: function (data) {
@@ -29,10 +29,12 @@ function getDataByRand(id,callback) {
             $('.word-info').html(detailHtml({
                 data: data
             }));
-            if (location.href.indexOf('id=') < 0) {
-                history.replaceState({}, '', location.href + (location.href.indexOf('?') < 0 ? '?' : '&') + 'id=' + data[0].id);
-            } else {
+            if (location.href.indexOf('id=') > 0) {
                 history.replaceState({}, '', location.href.replace(/(id=)[^&]*/, '$1' + data[0].id));
+            } else if (location.href.indexOf('/detail/') > 0) {
+                history.replaceState({}, '', location.href.replace(/(detail\/)\d+/, '$1' + id));
+            } else {
+                history.replaceState({}, '', location.href + (location.href.indexOf('?') < 0 ? '?' : '&') + 'id=' + data[0].id);
             }
         },
         error: function (error) {
@@ -47,7 +49,7 @@ module.exports = function () {
 
     $('.replace').on('click', function () {
         $('.search-value').val('');
-        var id =  parseInt(Math.random() * 24000); 
+        var id = parseInt(Math.random() * 24000);
         getDataByRand(id);
     });
     // search.sugg(getDataByName);
