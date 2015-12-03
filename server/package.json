@@ -11,16 +11,17 @@
   ],
   "author": "shangwenhe@baidu.com",
   "license": "ISC",
-  "dependencies":{
-    "express": "*",
+  "dependencies": {
+    "async": "*",
     "ejs": "*",
-    "mysql":"*",
-    "async":"*",
-    "underscore":"*"
+    "express": "*",
+    "https": "^1.0.0",
+    "mysql": "*",
+    "underscore": "*",
+    "util": "^0.10.3"
   },
-  "bugs":{
-    "url":"https://github.com/shangwenhe/chengyu-server/issues"
+  "bugs": {
+    "url": "https://github.com/shangwenhe/chengyu-server/issues"
   },
-  "homepage":"http:www.yiajie.com"
+  "homepage": "http:www.yiajie.com"
 }
-

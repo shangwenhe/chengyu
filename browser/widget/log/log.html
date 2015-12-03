@@ -3,7 +3,7 @@
     @require './log.less'
 -->
 <div class='log' style='display:none'>
-<script>
+    <script>
         if (window.location.href.indexOf('yiajie') > 0)
         {
             var _hmt = _hmt || [];
@@ -14,8 +14,13 @@
                 s.parentNode.insertBefore(hm, s);
             })();
 
+
+            (function () {
+                var bp = document.createElement('script');
+                bp.src = '//push.zhanzhang.baidu.com/push.js';
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
         }
     </script>
 </div>
-
-
