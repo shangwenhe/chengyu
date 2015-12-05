@@ -18,12 +18,13 @@ global.emitter = new events.EventEmitter();
 global.util = require('util');
 global.async = require('async');
 global._ = require('underscore');
+global.fs = require('fs');
 
 var path = require('path');
 
 // module 模块
 require('./module/mysql')
-// 控制器 -- 注册路由中的事件
+    // 控制器 -- 注册路由中的事件
 require('./controller/index');
 // 引入路由
 var router = require('./router/index');
@@ -81,8 +82,22 @@ app.use(function (req, res) {
 
 // 监听端口
 var http = require('http');
-http.createServer(app).listen(app.get('port'), function () {
+var server = http.createServer(app);
+
+// var https = require('https');
+// var server = https.createServer({
+//     key: fs.readFileSync(__dirname + '/ssl/yiajie.pem'),
+//     cert: fs.readFileSync(__dirname + '/ssl/certificate.pem')
+// }, app);
+
+server.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
+});
+server.on('connection', function () {
+    console.log('connection');
+});
+server.on('closed', function () {
+    console.log('exit');
 });
 
 /* eslint-enable fecs-camelcase */

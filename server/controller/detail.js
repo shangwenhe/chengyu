@@ -12,7 +12,7 @@
 emitter.on('render:detail', function (params, callback) {
     emitter.emit('sql:getInfoById', params.params.id, function (err, data, mk) {
         typeof callback === 'function' && callback({
-            title: 'index',
+            title: data[0] && data[0]['name'] || '成语大全',
             callback: params.query.callback || false,
             format: params.query.format || false,
             data:data

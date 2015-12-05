@@ -10,9 +10,10 @@
 /* eslint-disable fecs-camelcase */
 
 emitter.on('render:wordcount', function (params, callback) {
+    
     emitter.emit('sql:wordcount', params.params.len, function (err, data, mk) {
         typeof callback === 'function' && callback({
-            title: 'index',
+            title: '零一二三四五六七八九十'.split('')[params.params.len] +'字成语',
             callback: params.query.callback || false,
             format: params.query.format || false,
             data: data
