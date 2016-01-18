@@ -10,8 +10,6 @@ fis3 install jquery
 
 fis3 install underscore
 
-fis3 install bootstrap
-
 
 Event 事件对象
 
@@ -24,6 +22,6 @@ Node 依赖模块
 
 > express
 
-> ej
+> ejs
 
 > mysql
