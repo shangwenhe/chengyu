@@ -42,7 +42,10 @@ Module.prototype.query = function (query, callback) {
 };
 // 数据插入
 Module.prototype.insert = function () {
-    return 'insert';
+    this.connect.query(sql, function () {
+        // 序列化参数列表
+        callback.apply(null, Array.prototype.slice.call(arguments, 0));
+    });
 };
 // 数据选择
 Module.prototype.select = function (sql, callback) {

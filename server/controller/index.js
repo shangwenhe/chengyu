@@ -54,4 +54,8 @@ require('../module/wordcount');
 require('./wordcount');
 
 
+require('../module/taobao');
+require('./taobao');
+
+
 /* eslint-enable fecs-camelcase */

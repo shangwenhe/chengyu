@@ -62,6 +62,13 @@ module.exports = {
     // 取出指定个数的成语
     wordcount: function (req, res) {
         routerHook('wordcount', req, res);
+    },
+    // 取出指定个数的成语
+    taobao: function (req, res) {
+        if(req.params.page === 'postdata'){
+        console.log(req.body.id)
+        }
+        routerHook('taobao', req, res);
     }
 };
 /* eslint-enable fecs-camelcase */
