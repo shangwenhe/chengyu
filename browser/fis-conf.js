@@ -189,7 +189,7 @@ fis.media('dev')
     });
 
 // extends GLOBAL config
-fis.media('pro')
+fis.media('prod')
     .match('/{static,components}/**.js', {
         optimizer: fis.plugin('uglify-js'),
         packTo: '/pkg/static.js'

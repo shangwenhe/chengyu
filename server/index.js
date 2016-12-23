@@ -69,6 +69,8 @@ app.get('/geyan/:id', router.geyan);
 // 取出指定个数的成语
 app.get('/wordcount/:len', router.wordcount);
 
+app.get('/taobao/:page', router.taobao);
+app.post('/taobao/:page', router.taobao);
 
 // 当以上所有路由都无法接入时进入下列路由中
 app.use(function (err, req, res, next) {

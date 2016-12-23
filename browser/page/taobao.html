@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%></title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="shortcut icon" href="./icon.png" type="image/png" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="wap-font-scale" content="no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta content="telephone=no" name="format-detection">
+</head>
+
+<body>
+
+<% if(pagetype ==='admin') {%>
+        <link rel="import" href="chengyu:widget/taobao/admin/admin.html?__inline">
+<% }else if(pagetype ==='postdata') {%>
+        <link rel="import" href="chengyu:widget/taobao/postdata/postdata.html?__inline">
+        <% } else{  %>
+        <link rel="import" href="chengyu:widget/taobao/list/list.html?__inline">
+<% } %>
+</body>
+
+</html>
